@@ -28,21 +28,23 @@ export function LeaderBoardTable() {
   ];
 
   return (
-    <Table className="max-w-[43rem] text-white bg-white">
-      <TableHeader>
-        <TableRow>
-          <TableHead className="justify-start">ID</TableHead>
-          <TableHead className="justify-center">Title</TableHead>
-        </TableRow>
-      </TableHeader>
-      <TableBody>
-        {leaderBoardArray.map((item) => (
-          <TableRow key={item.id}>
-            <TableCell className="font-medium">{item.id}</TableCell>
-            <TableCell className="justify-center">{item.title}</TableCell>
+    <div className="flex justify-center items-center p-3">
+      <Table className="w-full md:max-w-[50%] text-white overflow-x-auto">
+        <TableHeader>
+          <TableRow>
+            <TableHead className="justify-start">ID</TableHead>
+            <TableHead className="justify-center">Student   </TableHead>
           </TableRow>
-        ))}
-      </TableBody>
-    </Table>
+        </TableHeader>
+        <TableBody>
+          {leaderBoardArray.map((item) => (
+            <TableRow key={item.id}>
+              <TableCell className="font-medium">{item.id}</TableCell>
+              <TableCell className="justify-center">{item.title}</TableCell>
+            </TableRow>
+          ))}
+        </TableBody>
+      </Table>
+    </div>
   );
 }

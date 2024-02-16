@@ -11,6 +11,7 @@
 // Import Routes
 
 import { Route as rootRoute } from './routes/__root'
+import { Route as LearnImport } from './routes/learn'
 import { Route as LeaderboardImport } from './routes/leaderboard'
 import { Route as DashboardImport } from './routes/dashboard'
 import { Route as CreateImport } from './routes/create'
@@ -18,6 +19,11 @@ import { Route as IndexImport } from './routes/index'
 import { Route as QuizQuizIdImport } from './routes/quiz.$quizId'
 
 // Create/Update Routes
+
+const LearnRoute = LearnImport.update({
+  path: '/learn',
+  getParentRoute: () => rootRoute,
+} as any)
 
 const LeaderboardRoute = LeaderboardImport.update({
   path: '/leaderboard',
@@ -64,6 +70,10 @@ declare module '@tanstack/react-router' {
       preLoaderRoute: typeof LeaderboardImport
       parentRoute: typeof rootRoute
     }
+    '/learn': {
+      preLoaderRoute: typeof LearnImport
+      parentRoute: typeof rootRoute
+    }
     '/quiz/$quizId': {
       preLoaderRoute: typeof QuizQuizIdImport
       parentRoute: typeof rootRoute
@@ -78,6 +88,7 @@ export const routeTree = rootRoute.addChildren([
   CreateRoute,
   DashboardRoute,
   LeaderboardRoute,
+  LearnRoute,
   QuizQuizIdRoute,
 ])
 

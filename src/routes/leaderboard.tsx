@@ -4,7 +4,6 @@ import { createFileRoute } from "@tanstack/react-router";
 function LeaderBoardPage() {
   return (
     <div>
-      <h1 className="text-white">LeaderBoard</h1>
       <LeaderBoardTable />
     </div>
   );
