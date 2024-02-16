@@ -77,6 +77,15 @@ const Nav = () => {
                 >
                   Temp
                 </Link>
+                
+              </li>
+              <li>
+              <Link
+                  to="/create"
+                  className="text-white hover:text-blue-700 dark:text-white dark:hover:text-blue-500"
+                >
+                  Teacher
+                </Link>
               </li>
             </ul>
           </div>
