@@ -4,19 +4,37 @@ import { Label } from "@/components/ui/label";
 import { Input } from "@/components/ui/input";
 import { useState } from "react";
 import { Button } from "@/components/ui/button";
+import { BASEURL } from "@/lib/links";
+import axios from "axios";
+import { useUser } from "@clerk/clerk-react";
 
 export default function TeacherPage() {
   const [title, setTitle] = useState("");
   const [link, setLink] = useState("");
   const [prompt, setPrompt] = useState("");
   const [transcript, setTranscript] = useState("");
+  const id = useUser();
+  console.log(id.user?.id);
 
   const handleSubmit = (e: any) => {
     e.preventDefault();
+    axios
+      .post(`${BASEURL}/lecture/create`, {
+        teacherId: id.user?.id,
+        title: title,
+        source: link,
+        query: prompt,
+        transcript: transcript,
+      })
+      .then((res) => console.log(res.data));
     console.log("Form submitted with Title:", title);
     console.log("Source Link:", link);
     console.log("Prompt for Notes:", prompt);
     console.log("transcript:", transcript);
+    setTitle("");
+    setLink("");
+    setPrompt("");
+    setTranscript("");
   };
 
   return (
