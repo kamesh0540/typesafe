@@ -90,7 +90,7 @@ const Nav = () => {
                 </Link>
               </li>
 
-              {teacher_email === "desmondaditya@gmail.com" ? (
+              {teacher_email === "atharvanighot@gmail.com" ? (
                 <li>
                   <Link
                     to="/create"
