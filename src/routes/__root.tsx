@@ -13,7 +13,6 @@ export const Route = createRootRoute({
         <Nav />
       </div>
       {/* <HeroComponent /> */}
-      
       <Outlet />
       <Footer />
       <TanStackRouterDevtools />
