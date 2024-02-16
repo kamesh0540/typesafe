@@ -99,8 +99,8 @@ export default function TeacherPage() {
             />
           </div>
         </CardContent>
-        <div className="flex justify-center items-center">
-          <Button type="submit" className="items-center">
+        <div className="flex justify-center items-center mb-2">
+          <Button type="submit" className="items-center ">
             Submit
           </Button>
         </div>

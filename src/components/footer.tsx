@@ -26,7 +26,9 @@ const Footer = () => {
         </div>
       </div>
       <div className="text-center mt-8">
-        <p>Designed and developed by </p>
+        <p>
+          Built with <strong>{"<3"}</strong> by team typesafe
+        </p>
       </div>
     </footer>
   );

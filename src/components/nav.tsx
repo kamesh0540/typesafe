@@ -1,4 +1,5 @@
-import { useState } from "react";
+import axios from "axios";
+import { useEffect, useState } from "react";
 import { Link } from "@tanstack/react-router";
 import {
   SignInButton,
@@ -7,12 +8,21 @@ import {
   UserButton,
   useUser,
 } from "@clerk/clerk-react";
+import { BASEURL } from "@/lib/links";
+import { Tally5 } from "lucide-react";
 
 const Nav = () => {
   const [isMenuOpen, setIsMenuOpen] = useState(false);
   const token = useUser();
   const teacher_email = token.user?.primaryEmailAddress?.emailAddress;
+  const [xp, setX] = useState(0);
+  const user = useUser();
 
+  useEffect(() => {
+    axios
+      .get(`${BASEURL}/score/xp/${user?.user?.id}`)
+      .then((res) => setX(res.data));
+  }, []);
   const toggleMenu = () => {
     setIsMenuOpen(!isMenuOpen);
   };
@@ -98,6 +108,10 @@ const Nav = () => {
               <SignedIn>
                 <UserButton afterSignOutUrl="/" />
               </SignedIn>
+              <li className="flex flex-row items-center">
+                <Tally5 className="h-4 w-4" color="white" />
+                {xp}
+              </li>
             </ul>
           </div>
         </div>

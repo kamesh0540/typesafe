@@ -12,7 +12,6 @@ export const Route = createRootRoute({
       <div className="mb-10">
         <Nav />
       </div>
-      {/* <HeroComponent /> */}
       <Outlet />
       <Footer />
       <TanStackRouterDevtools />
