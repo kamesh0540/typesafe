@@ -11,8 +11,7 @@ import {
 const Nav = () => {
   const [isMenuOpen, setIsMenuOpen] = useState(false);
   const token = useUser();
-
-  console.log("This is Auth token", token.user?.fullName, token.user?.imageUrl);
+  const teacher_email = token.user?.primaryEmailAddress?.emailAddress;
 
   const toggleMenu = () => {
     setIsMenuOpen(!isMenuOpen);
@@ -65,38 +64,32 @@ const Nav = () => {
               </li>
               <li>
                 <Link
-                  to="/about"
+                  to="/dashboard"
                   className="text-white hover:text-blue-700 dark:text-white dark:hover:text-blue-500"
                   aria-current="page"
                 >
-                  About
+                  Dashboard
                 </Link>
               </li>
               <li>
                 <Link
-                  to="/contact"
+                  to="/leaderboard"
                   className="text-white hover:text-blue-700 dark:text-white dark:hover:text-blue-500"
                 >
-                  Contact
+                  Leaderboard
                 </Link>
               </li>
-              <li>
-                <Link
-                  to="/temp"
-                  className="text-white hover:text-blue-700 dark:text-white dark:hover:text-blue-500"
-                >
-                  Temp
-                </Link>
-                
-              </li>
-              <li>
-              <Link
-                  to="/create"
-                  className="text-white hover:text-blue-700 dark:text-white dark:hover:text-blue-500"
-                >
-                  Teacher
-                </Link>
-              </li>
+
+              {teacher_email === "atharvanighot@gmail.com" ? (
+                <li>
+                  <Link
+                    to="/create"
+                    className="text-white hover:text-blue-700 dark:text-white dark:hover:text-blue-500"
+                  >
+                    Create
+                  </Link>
+                </li>
+              ) : null}
               <SignedOut>
                 <li>
                   <SignInButton />

@@ -11,16 +11,21 @@
 // Import Routes
 
 import { Route as rootRoute } from './routes/__root'
-import { Route as TempImport } from './routes/temp'
+import { Route as LeaderboardImport } from './routes/leaderboard'
+import { Route as DashboardImport } from './routes/dashboard'
 import { Route as CreateImport } from './routes/create'
-import { Route as ContactImport } from './routes/contact'
-import { Route as AboutImport } from './routes/about'
 import { Route as IndexImport } from './routes/index'
+import { Route as QuizQuizIdImport } from './routes/quiz.$quizId'
 
 // Create/Update Routes
 
-const TempRoute = TempImport.update({
-  path: '/temp',
+const LeaderboardRoute = LeaderboardImport.update({
+  path: '/leaderboard',
+  getParentRoute: () => rootRoute,
+} as any)
+
+const DashboardRoute = DashboardImport.update({
+  path: '/dashboard',
   getParentRoute: () => rootRoute,
 } as any)
 
@@ -29,18 +34,13 @@ const CreateRoute = CreateImport.update({
   getParentRoute: () => rootRoute,
 } as any)
 
-const ContactRoute = ContactImport.update({
-  path: '/contact',
-  getParentRoute: () => rootRoute,
-} as any)
-
-const AboutRoute = AboutImport.update({
-  path: '/about',
-  getParentRoute: () => rootRoute,
-} as any)
-
 const IndexRoute = IndexImport.update({
   path: '/',
+  getParentRoute: () => rootRoute,
+} as any)
+
+const QuizQuizIdRoute = QuizQuizIdImport.update({
+  path: '/quiz/$quizId',
   getParentRoute: () => rootRoute,
 } as any)
 
@@ -52,20 +52,20 @@ declare module '@tanstack/react-router' {
       preLoaderRoute: typeof IndexImport
       parentRoute: typeof rootRoute
     }
-    '/about': {
-      preLoaderRoute: typeof AboutImport
-      parentRoute: typeof rootRoute
-    }
-    '/contact': {
-      preLoaderRoute: typeof ContactImport
-      parentRoute: typeof rootRoute
-    }
     '/create': {
       preLoaderRoute: typeof CreateImport
       parentRoute: typeof rootRoute
     }
-    '/temp': {
-      preLoaderRoute: typeof TempImport
+    '/dashboard': {
+      preLoaderRoute: typeof DashboardImport
+      parentRoute: typeof rootRoute
+    }
+    '/leaderboard': {
+      preLoaderRoute: typeof LeaderboardImport
+      parentRoute: typeof rootRoute
+    }
+    '/quiz/$quizId': {
+      preLoaderRoute: typeof QuizQuizIdImport
       parentRoute: typeof rootRoute
     }
   }
@@ -75,10 +75,10 @@ declare module '@tanstack/react-router' {
 
 export const routeTree = rootRoute.addChildren([
   IndexRoute,
-  AboutRoute,
-  ContactRoute,
   CreateRoute,
-  TempRoute,
+  DashboardRoute,
+  LeaderboardRoute,
+  QuizQuizIdRoute,
 ])
 
 /* prettier-ignore-end */
