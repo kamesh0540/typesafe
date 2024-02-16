@@ -1,8 +1,18 @@
 import { useState } from "react";
 import { Link } from "@tanstack/react-router";
+import {
+  SignInButton,
+  SignedIn,
+  SignedOut,
+  UserButton,
+  useUser,
+} from "@clerk/clerk-react";
 
 const Nav = () => {
   const [isMenuOpen, setIsMenuOpen] = useState(false);
+  const token = useUser();
+
+  console.log("This is Auth token", token.user?.fullName, token.user?.imageUrl);
 
   const toggleMenu = () => {
     setIsMenuOpen(!isMenuOpen);
@@ -78,6 +88,14 @@ const Nav = () => {
                   Temp
                 </Link>
               </li>
+              <SignedOut>
+                <li>
+                  <SignInButton />
+                </li>
+              </SignedOut>
+              <SignedIn>
+                <UserButton afterSignOutUrl="/" />
+              </SignedIn>
             </ul>
           </div>
         </div>
