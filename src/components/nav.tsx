@@ -108,9 +108,9 @@ const Nav = () => {
               <SignedIn>
                 <UserButton afterSignOutUrl="/" />
               </SignedIn>
-              <li className="flex flex-row items-center">
-                <Tally5 className="h-4 w-4" color="white" />
-                {xp}
+              <li className="flex flex-row items-center gap-5">
+                <strong>55</strong>
+                {` XP`}
               </li>
             </ul>
           </div>

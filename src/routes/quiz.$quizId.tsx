@@ -261,7 +261,7 @@ function QuizPage() {
                 </label>
               </div>
             </div>
-            <Button className="flex items-center ml-64 ">Submit answers</Button>
+            <Button className="flex items-center ml-80 ">Submit answers</Button>
           </div>
         </div>
       </div>
